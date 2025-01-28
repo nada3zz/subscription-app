@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->enum('role', ['admin', 'customer'])->default('customer');
             $table->boolean('is_active')->default(true);
+            $table->unsignedBigInteger('payment_plans_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
