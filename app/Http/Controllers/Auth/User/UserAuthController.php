@@ -50,7 +50,7 @@ class UserAuthController extends Controller
       return redirect()->route('register.step_one')->with('error', 'Registration data not found. Please start over.');
     }
 
-    $user = $this->registrationService->completeRegistration($userData, $request->validated('plan_id'));
+    $user = $this->registrationService->completeRegistration($userData, $request->plan_id);
 
     return redirect()->route('user.home');
   }
@@ -62,7 +62,9 @@ class UserAuthController extends Controller
 
   public function login(LoginRequest $request)
   {
-    return $this->authService->login($request);
+    if ($this->authService->login($request)) {
+      return redirect()->route('user.home');
+    }
   }
 
   public function logout(Request $request)
