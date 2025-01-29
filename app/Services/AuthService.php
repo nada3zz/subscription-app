@@ -18,7 +18,7 @@ class AuthService
         if ($user && $user->is_active) {
             if (Auth::attempt($validated)) {
               $request->session()->regenerate();
-              return redirect()->route('user.home');
+              return true;
             }
           }
 
