@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\PaymentPlan\PaymentPlan;
+use App\Models\Plan\Plan;
 
-class PaymentPlanSeeder extends Seeder
+class PlanSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,11 +15,11 @@ class PaymentPlanSeeder extends Seeder
      */
     public function run()
     {
-        PaymentPlan::create([
+        Plan::create([
             'name' => 'Monthly',
             'price' => 10,
         ]);
-        PaymentPlan::create([
+        Plan::create([
             'name' => 'Yearly',
             'price' => 90,
         ]);
