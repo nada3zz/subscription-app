@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('payment_plans_id');
-            $table->decimal('amount', 8, 2); 
-            $table->string('payment_method');
-            $table->string('transaction_id')->unique(); 
-            $table->string('status')->default('pending');
+            $table->unsignedBigInteger('plan_id');
+            $table->timestamp('sub_start')->nullable();
+            $table->timestamp('sub_end')->nullable();
             $table->timestamps();
      
         });
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer_payments');
+        Schema::dropIfExists('subscriptions');
     }
 };

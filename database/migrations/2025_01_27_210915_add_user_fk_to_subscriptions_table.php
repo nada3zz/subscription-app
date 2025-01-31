@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('payments', function (Blueprint $table) {
+        Schema::table('subscriptions', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('payment_plans_id')->references('id')->on('payment_plans')->onDelete('cascade');
+            $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
         });
     }
 
@@ -26,8 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('payments', function (Blueprint $table) {
-            //
+        Schema::table('subscriptions', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+            $table->dropForeign(['plan_id']);
         });
     }
 };

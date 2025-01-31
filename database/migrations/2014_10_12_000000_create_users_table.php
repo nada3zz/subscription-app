@@ -17,11 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('role', ['admin', 'customer'])->default('customer');
             $table->boolean('is_active')->default(true);
-            $table->unsignedBigInteger('payment_plans_id')->nullable();
+            $table->unsignedBigInteger('plan_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
