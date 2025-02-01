@@ -38,12 +38,12 @@ Route::middleware('auth')->post('/logout', [UserAuthController::class, 'logout']
 //Admin Routes
 Route::get('admin/login', [AdminAuthController::class, 'show_login'])->name('show.admin.login');
 Route::post('admin/login', [AdminAuthController::class, 'login'])->name('admin.login');    
-Route::middleware('auth')->post('admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
-Route::middleware(['role:admin', 'auth'])->get('admin/home', [AdminHomeController::class, 'index'])->name('admin.home');
-Route::middleware(['role:admin', 'auth'])->get('admin/home/users/edit', [ManageUsersController::class, 'edit'])->name('user.edit');
-Route::middleware(['role:admin', 'auth'])->patch('admin/home/users/edit', [ManageUsersController::class, 'update'])->name('user.update');
-Route::middleware(['role:admin', 'auth'])->delete('admin/home/users', [ManageUsersController::class, 'destroy'])->name('user.destroy');
-Route::middleware(['role:admin', 'auth'])->get('admin/home/users', [ManageUsersController::class, 'index'])->name('user.index');
+Route::post('admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+Route::middleware('admin.auth')->get('admin/home', [AdminHomeController::class, 'index'])->name('admin.home');
+Route::middleware(['admin.auth'])->get('admin/home/users/edit', [ManageUsersController::class, 'edit'])->name('user.edit');
+Route::middleware(['admin.auth'])->patch('admin/home/users/edit', [ManageUsersController::class, 'update'])->name('user.update');
+Route::middleware(['admin.auth'])->delete('admin/home/users', [ManageUsersController::class, 'destroy'])->name('user.destroy');
+Route::middleware(['admin.auth'])->get('admin/home/users', [ManageUsersController::class, 'index'])->name('user.index');
 
 
 

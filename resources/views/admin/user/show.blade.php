@@ -30,9 +30,8 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Plan</th>
-                                <th>Role</th>
+                                <th>Is Active</th>
                                 <th>Created At</th>
-                                <th>Is Active?</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
@@ -43,10 +42,9 @@
                                 <td>{{ $loop->index + 1 }}</td>
                                 <td> {{ $user->name }} </td>
                                 <td> {{ $user->email }} </td>
-                                <td>{{ $user->payment_plans_id }}</td>
-                                <td>{{ $user->role }}</td>
+                                <td>{{ $user->plan_name }}</td>
+                                <th>{{ $user->is_active ? 'true' : 'false' }}</th>
                                 <td>{{ $user->created_at }}</td>
-                                <th>{{ $user->is_active }}</th>
                                 <td class="text-center"><a href="{{ route('user.edit', ['id' => $user->id]) }}"><i
                                             class="far fa-edit"></i></a></td>
                                 <td class="text-center">
@@ -80,11 +78,10 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Plan</th>
-                                <th>Role</th>
+                                <th>Is Active?</th>
                                 <th>Created At</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
-                                <th>Status</th>
                             </tr>
                         </tfoot>
                     </table>

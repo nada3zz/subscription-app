@@ -3,15 +3,19 @@
 namespace App\Services\Admin;
 
 use App\Models\User\User;
-use App\Models\PaymentPlan\paymentPlan;
-use Illuminate\Http\Request;
 use App\Http\Requests\Admin\UpdateUserRequest;
+use Illuminate\Support\Facades\DB;
+
 
 class ManageUsersService
 {
     public function index()
     {
-        $users = User::all();
+        $users = DB::table('users')
+        ->leftJoin('plans', 'users.plan_id', '=', 'plans.id')
+        ->select('users.*', 'plans.name as plan_name')
+        ->get();
+
         return view('admin.user.show', compact('users'));
     }
 

@@ -24,7 +24,7 @@ class RegisterStepTwoRequest extends FormRequest
     public function rules()
     {
         return [
-            'plan_id' => 'required|exists:payment_plans,id',
+            'plan_id' => 'required|exists:plans,id',
         ];
     }
 }

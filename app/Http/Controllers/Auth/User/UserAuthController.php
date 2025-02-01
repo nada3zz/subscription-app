@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
-use App\Models\PaymentPlan\paymentPlan;
+use App\Models\Plan\Plan;
 use App\Services\AuthService;
 use App\Services\RegistrationService;
 use App\Http\Requests\Auth\RegisterStepOneRequest;
@@ -38,7 +38,7 @@ class UserAuthController extends Controller
 
   public function show_register_step_two()
   {
-    $plans = PaymentPlan::all();
+    $plans = Plan::all();
     return view('auth.register.step-two', compact('plans'));
   }
 

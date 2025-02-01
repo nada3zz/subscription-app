@@ -48,29 +48,15 @@
             </ul>
             <!-- Right Side of Navbar -->
             <ul class="navbar-nav ms-auto">
-                @if (Auth::guest())
-                <!-- Authentication Links for Guests -->
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('admin/login') }}">Login</a>
-                </li>
-                @else
                 <!-- User Dropdown Menu -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ Auth::user()->name }} <span class="caret"></span>
+                    <a class="dropdown-item" href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Logout
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li>
-                            <a class="dropdown-item" href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
-                            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </li>
-                    </ul>
+                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
-                @endif
             </ul>
 
             <li class="nav-item">

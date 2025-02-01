@@ -25,13 +25,13 @@ class AdminAuthController extends Controller
 
   public function login(LoginRequest $request)
   {
-    if ( $this->authService->login($request)) {
+    if ($this->authService->admin_login($request)) {
       return redirect()->route('admin.home');
     }
   }
 
   public function logout(Request $request)
   {
-    return $this->authService->logout($request);
+    return $this->authService->logout($request, 'admin', 'show.admin.login');
   }
 }
